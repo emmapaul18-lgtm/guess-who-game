@@ -14,6 +14,16 @@
       color: #ff4d88;
     }
 
+    button {
+      padding: 10px 15px;
+      margin: 10px;
+      border: none;
+      background: #ff4d88;
+      color: white;
+      cursor: pointer;
+      border-radius: 8px;
+    }
+
     .grid {
       display: grid;
       grid-template-columns: repeat(5, 120px);
@@ -48,60 +58,55 @@
 <h1>💖 Guess Who 💖</h1>
 <p>Click faces to eliminate!</p>
 
+<button onclick="startGame()">New Game 🔄</button>
+
 <div class="grid" id="grid"></div>
 
 <script>
 const people = [
-  "emma",
-  "samarth",
-  "ashish",
-  "tabrez",
-  "ram",
-  "chinmay",
-  "aditya",
-  "ishan",
-  "shiv",
-  "kris",
-  "rayyan",
-  "raushan",
-  "samera",
-  "hashir",
-  "fisoye",
-  "gade",
-  "suhas",
-  "amrit",
-  "jasmine",
-  "tara",
-  "saee",
-  "malik",
-  "muzzamil",
-  "parva",
-  "tanisha",
-  "kahna",
-  "nolan",
-  "nikita",
-  "rohit",
-  "satvik",
-  "chakri"
+  "Emma","Samarth","Ashish","Tabrez","Ram","Chinmay","Aditya","Ishan",
+  "Shiv","Kris","Rayyan","Raushan","Samera","Hashir","Fisoye","Gade",
+  "Suhas","Amrit","Jasmine","Tara","Saee","Malik","Muzzamil","Parva",
+  "Tanisha","Kanha","Nolan","Nikita","Rohit","Satvik","Chakri"
 ];
 
 const grid = document.getElementById("grid");
 
-people.forEach(name => {
-  const card = document.createElement("div");
-  card.className = "card";
+let secretPerson = "";
 
-  card.innerHTML = `
-    <img src="${name}.jpeg" alt="${name}">
-    <p>${name}</p>
-  `;
+// 🎯 Start / Restart Game
+function startGame() {
+  grid.innerHTML = "";
 
-  card.onclick = () => {
-    card.classList.toggle("eliminated");
-  };
+  // pick random secret person
+  secretPerson = people[Math.floor(Math.random() * people.length)];
 
-  grid.appendChild(card);
-});
+  console.log("SECRET PERSON (debug only):", secretPerson);
+
+  people.forEach(name => {
+    const card = document.createElement("div");
+    card.className = "card";
+
+    card.innerHTML = `
+      <img src="./${name}.jpeg" alt="${name}">
+      <p>${name}</p>
+    `;
+
+    card.onclick = () => {
+      card.classList.toggle("eliminated");
+
+      // optional win check
+      if (name === secretPerson) {
+        alert("🎉 You clicked the secret person!");
+      }
+    };
+
+    grid.appendChild(card);
+  });
+}
+
+// start game automatically on load
+startGame();
 </script>
 
 </body>
