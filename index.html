@@ -2,33 +2,41 @@
 <html>
 <head>
   <title>Guess Who 💕</title>
+
   <style>
     body {
       font-family: Arial;
       text-align: center;
       background: #ffe6f0;
     }
+
     h1 {
       color: #ff4d88;
     }
+
     .grid {
       display: grid;
-      grid-template-columns: repeat(5, 1fr);
-      gap: 10px;
-      max-width: 600px;
+      grid-template-columns: repeat(5, 120px);
+      gap: 15px;
+      justify-content: center;
       margin: auto;
     }
+
     .card {
       border: 2px solid #ff99cc;
       padding: 5px;
       background: white;
       cursor: pointer;
+      width: 120px;
     }
+
     .card img {
       width: 100%;
-      height: 100px;
-      object-fit: cover;
+      height: 140px;
+      object-fit: contain;
+      background: white;
     }
+
     .eliminated {
       opacity: 0.2;
     }
@@ -44,19 +52,37 @@
 
 <script>
 const people = [
-  "emma",
-  "samarth",
-  "ashish",
-  "malik",
-  "muzzamil",
-  "parva",
-  "tanisha",
-  "kanha",
-  "nolan",
-  "nikita",
-  "rohit",
-  "satvik",
-  "chakri"
+  "Emma",
+  "Samarth",
+  "Ashish",
+  "Tabrez",
+  "Ram",
+  "Chinmay",
+  "Aditya",
+  "Ishan",
+  "Shiv",
+  "Kris",
+  "Rayyan",
+  "Raushan",
+  "Samera",
+  "Hashir",
+  "Fisoye",
+  "Gade",
+  "Suhas",
+  "Amrit",
+  "Jasmine",
+  "Tara",
+  "Saee",
+  "Malik",
+  "Muzzamil",
+  "Parva",
+  "Tanisha",
+  "Kanha",
+  "Nolan",
+  "Nikita",
+  "Rohit",
+  "Satvik",
+  "Chakri"
 ];
 
 const grid = document.getElementById("grid");
@@ -66,7 +92,7 @@ people.forEach(name => {
   card.className = "card";
 
   card.innerHTML = `
-    <img src="${name}.jpeg">
+    <img src="./${name}.jpeg" alt="${name}">
     <p>${name}</p>
   `;
 
